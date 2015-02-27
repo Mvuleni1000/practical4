@@ -2,6 +2,8 @@ package za.ac.cput.practical4;
 
 import DesignPrincple.OCP.correction.LowAblum;
 import DesignPrincple.OCP.correction.MusicInterface;
+import DesignPrincple.OCP.voiletion.Album;
+import DesignPrincple.OCP.voiletion.MainFolder;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +14,14 @@ import org.junit.Test;
  */
 public class TestOCP {
 
-    MusicInterface song ;
+    private MusicInterface song ;
+    private MainFolder tracks = new MainFolder() {
+        @Override
+        public String getFloder() {
+            return null;
+        }
+    };
+
     @Before
     public void setUp() throws Exception {
         song = new LowAblum();
@@ -28,7 +37,7 @@ public class TestOCP {
     @Test
     public void violationTest()
     {
-
+        Assert.assertNotNull("house",tracks.getAlbum());
     }
 
     @After
